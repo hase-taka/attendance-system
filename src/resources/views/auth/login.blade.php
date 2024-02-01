@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/login.css')}}">
 @endsection
 
-@section('main')
+@section('content')
 <div class="login-form">
     <h2 class="login-form__head-title">ログイン</h2>
     <div login-form__inner>
@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div class="login-form__group">
-                <input class="login-form__input" type="password" name="password" id="passwprd" placeholder="メールアドレス">
+                <input class="login-form__input" type="password" name="password" id="password" placeholder="メールアドレス">
                 <p class="register-form__error-message">
                     @error('password')
                     {{ $message }}

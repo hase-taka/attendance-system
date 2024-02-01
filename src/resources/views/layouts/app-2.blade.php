@@ -7,6 +7,7 @@
     <title>Attendance</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css')}}">
     <link rel="stylesheet" href="{{ asset('css/app-2.css')}}">
+    @yield('css')
 </head>
 <body>
     <header class="header">
@@ -28,7 +29,7 @@
         </div>
     </header>
     <main>
-        @yield('main')
+        @yield('content')
     </main>
     <footer class="footer">
         <p class="footer-small"><small>Atte,inc.</small></p>

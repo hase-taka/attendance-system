@@ -16,7 +16,7 @@
         </div>
     </header>
     <main>
-        @yield('main')
+        @yield('content')
     </main>
     <footer class="footer">
         <p><small>Atte,inc.</small></p>
