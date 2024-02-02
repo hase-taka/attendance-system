@@ -13,19 +13,19 @@
     </div>
     @endif
 </div>
-<div class="timein__form">
+<div class="punchin__form">
     <form class="timestamp" action="" method="post">
     @csrf
-        <div class="timein__btn">
-            <button class="timein__btn-submit" type="submit">勤務開始</button>
+        <div class="punchin__btn">
+            <button class="punchin__btn-submit" type="submit">勤務開始</button>
         </div>
     </form>
 </div>
-<div class="timeout__form">
+<div class="punchout__form">
     <form class="timestamp" action="" method="post">
     @csrf
-        <div class="timeout__btn">
-            <button class="timeout__btn-submit" type="submit">勤務終了</button>
+        <div class="punchout__btn">
+            <button class="punchout__btn-submit" type="submit">勤務終了</button>
         </div>
     </form>
 </div>

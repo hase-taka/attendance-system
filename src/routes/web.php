@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register',[RegisteredUserController::class, 'store']);
 
 Route::get('/', function () {
     return view('welcome');

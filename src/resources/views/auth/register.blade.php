@@ -8,7 +8,7 @@
 <div class="register-form">
     <h2 class="register-form__head-title">会員登録</h2>
     <div class="register-form__inner">
-        <form class="register-form__form" action="">
+        <form class="register-form__form" action="/register" method="post">
             @csrf
             <div class="register-form__group">
                 <input class="register-form__input" type="text" name="name" id="name" placeholder="名前">
@@ -46,7 +46,7 @@
         </form>
         <div class="login-transition__form">
             <p class="login-nav">アカウントをお持ちの方はこちらから</p>
-            <a class="register-transition__btn" href="/login">ログイン</a>
+            <a class="login-transition__btn" href="/login">ログイン</a>
         </div>
     </div>
 </div>
