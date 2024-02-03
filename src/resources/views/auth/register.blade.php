@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div class="register-form__group">
-                <input class="register-form__input" type="mail" name="email" id="email" placeholder="メールアドレス">
+                <input class="register-form__input" type="email" name="email" id="email" placeholder="メールアドレス">
                 <p class="register-form__error-message">
                     @error('email')
                     {{ $message }}

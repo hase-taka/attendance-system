@@ -4,15 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterRequest;
 
-
-
-
-class RegisteredUserController extends Controller
+class AuthenticatedSessionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,7 +25,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        //
     }
 
     /**
@@ -40,20 +34,20 @@ class RegisteredUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterRequest $request)
+    public function store(Request $request)
     {
-        // $user = $request->all();
-        // User::create($user);
+        $credentials = $request->only('email', 'password');
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        if (Auth::attempt($credentials)){
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
+        return back()->withErrors([
+            'email' => 'メールアドレスが正しくありません'
         ]);
 
-        Auth::login($user);
-
-        return redirect('/login');
     }
 
     /**

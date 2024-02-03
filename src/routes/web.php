@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,9 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register',[RegisteredUserController::class, 'store']);
+
+Route::get('/login',[AuthenticatedSessionController::class, 'store']);
+Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');

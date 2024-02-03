@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Time extends Model
 {
-    use HasFactory;
+    protected $fillable = ['user_id', 'punchIn', 'punchOut','breakIn','breakOut'];
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
 }
