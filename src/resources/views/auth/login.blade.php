@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div class="login-form__group">
-                <input class="login-form__input" type="password" name="password" id="password" placeholder="メールアドレス">
+                <input class="login-form__input" type="password" name="password" id="password" placeholder="パスワード">
                 <p class="register-form__error-message">
                     @error('password')
                     {{ $message }}

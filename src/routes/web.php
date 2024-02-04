@@ -18,7 +18,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register',[RegisteredUserController::class, 'store']);
 
-Route::get('/login',[AuthenticatedSessionController::class, 'store']);
+Route::get('/login',[AuthenticatedSessionController::class, 'create']);
+// Route::get('/login',[AuthenticatedSessionController::class, 'store']);
 Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->middleware('auth');
 
 Route::get('/', function () {

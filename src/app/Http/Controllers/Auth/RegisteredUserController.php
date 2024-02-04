@@ -45,13 +45,22 @@ class RegisteredUserController extends Controller
         // $user = $request->all();
         // User::create($user);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
-        Auth::login($user);
+        // Auth::login($user);
+
+        // return redirect('/login');
+
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         return redirect('/login');
     }
