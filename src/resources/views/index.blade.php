@@ -3,6 +3,14 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 @endsection
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script>
+$(function() {
+    $(".attendance-btn button").click(function() {
+        $(this).toggleClass("click");
+    });
+});
+</script>
 
 @section('content')
 <div class="my-page__alert">

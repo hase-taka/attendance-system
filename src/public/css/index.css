@@ -9,15 +9,24 @@
     padding-bottom: 5%;
 }
 
+.attendance-btn button.click {
+    color: rgb(236, 236, 236);
+}
+
+.attendance-btn:checked{
+    color: blue;
+}
+
 .attendance-btn button{
     background-color: white;
     font-size: 22px;
     font-weight: bold;
     border: none;
     border-radius: 2px;
-    margin: 15px 15px 15px;
+    margin: 1% 15px 1%;
     width: 500px;
     height: 200px;
+    cursor: pointer;
 }
 
 .work-btn, .break-btn{
