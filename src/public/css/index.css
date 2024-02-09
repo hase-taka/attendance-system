@@ -1,0 +1,26 @@
+.my-page__alert{
+    text-align: center;
+    padding-top: 30px;
+    font-weight: normal;
+}
+
+.attendance-btn{
+    margin-top: 2%;
+    padding-bottom: 5%;
+}
+
+.attendance-btn button{
+    background-color: white;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    margin: 15px 15px 15px;
+    width: 500px;
+    height: 200px;
+}
+
+.work-btn, .break-btn{
+    display: flex;
+    justify-content: center;
+}

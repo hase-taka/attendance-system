@@ -1,0 +1,50 @@
+.register-form {}
+
+.login-form__head-title {
+    padding-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.login-form__inner {
+    text-align: center;
+}
+
+.login-form__input {
+    width: 25%;
+    height: 40px;
+    margin-bottom: 20px;
+    background-color: rgb(236, 236, 236);
+    border: 1px gray solid;
+    border-radius: 3px;
+}
+
+::placeholder {
+    padding-left: 10px;
+
+}
+
+.login-form__btn {
+    width: 25.5%;
+    height: 40px;
+    margin-top: 5px;
+    background-color: blue;
+    color: white;
+    border: 1px blue solid;
+    border-radius: 3px;
+}
+
+.register-transition__form {
+    margin-top: 30px;
+    padding-bottom: 15%;
+}
+
+.register-nav {
+    color: gray;
+}
+
+.register-transition__btn {
+    color: blue;
+    text-decoration: none;
+    padding-bottom: 20px;
+}

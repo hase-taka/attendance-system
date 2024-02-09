@@ -16,10 +16,12 @@
         </div>
     </header>
     <main>
+        <div class="main">
         @yield('content')
+        </div>
     </main>
     <footer class="footer">
-        <p><small>Atte,inc.</small></p>
+        <p class="footer-small"><small>Atte,inc.</small></p>
     </footer>
 </body>
 </html>

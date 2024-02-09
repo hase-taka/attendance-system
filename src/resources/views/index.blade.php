@@ -6,43 +6,46 @@
 
 @section('content')
 <div class="my-page__alert">
-    @if(session('message'))
     <div class="my-page__alert--login">
-        {{ session('message') }}
-        <!-- return redirect('/')->with('message', 'さんお疲れさまです！') -->
+        <h2><?php $user = Auth::user(); ?>{{ $user->name }}さんお疲れさまです！</h2>
     </div>
-    @endif
 </div>
-<div class="punchin__form">
-    <form class="timestamp" action="" method="post">
-    @csrf
-        <div class="punchin__btn">
-            <button class="punchin__btn-submit" type="submit">勤務開始</button>
+<div class="attendance-btn">
+    <div class="work-btn">
+        <div class="punchin__form">
+            <form class="timestamp" action="/punchin" method="post">
+            @csrf
+                <div class="punchin__btn">
+                    <button class="punchin__btn-submit" type="submit">勤務開始</button>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<div class="punchout__form">
-    <form class="timestamp" action="" method="post">
-    @csrf
-        <div class="punchout__btn">
-            <button class="punchout__btn-submit" type="submit">勤務終了</button>
+        <div class="punchout__form">
+            <form class="timestamp" action="/punchout" method="post">
+            @csrf
+                <div class="punchout__btn">
+                    <button class="punchout__btn-submit" type="submit">勤務終了</button>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<div class="breakin__form">
-    <form class="timestamp" action="" method="post">
-    @csrf
-        <div class="breakin__btn">
-            <button class="breakin__btn-submit" type="submit">休憩開始</button>
+    </div>
+    <div class="break-btn">
+        <div class="breakin__form">
+            <form class="timestamp" action="breakin" method="post">
+            @csrf
+                <div class="breakin__btn">
+                    <button class="breakin__btn-submit" type="submit">休憩開始</button>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<div class="breakout__form">
-    <form class="timestamp" action="" method="post">
-    @csrf
-        <div class="breakout__btn">
-            <button class="breakout__btn-submit" type="submit">休憩終了</button>
+        <div class="breakout__form">
+            <form class="timestamp" action="breakout" method="post">
+            @csrf
+                <div class="breakout__btn">
+                    <button class="breakout__btn-submit" type="submit">休憩終了</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 @endsection

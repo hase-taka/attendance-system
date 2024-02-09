@@ -7,23 +7,33 @@
 @section('content')
 <div class="login-form">
     <h2 class="login-form__head-title">ログイン</h2>
-    <div login-form__inner>
-        <form class="login-form__form" action="">
+    <div class="login-form__inner">
+        <form class="login-form__form" action="/login" method="post">
         @csrf
             <div class="login-form__group">
                 <input class="login-form__input" type="mail" name="email" id="email" placeholder="メールアドレス">
                 <p class="register-form__error-message">
-                    @error('email')
+                    <!-- @error('email')
                     {{ $message }}
-                    @enderror
+                    @enderror -->
+                    @if ($errors->has('email'))
+                  <span class="invalid-feedback" role="alert">
+                    {{ $errors->first('email') }}
+                  </span>
+                @endif
                 </p>
             </div>
             <div class="login-form__group">
                 <input class="login-form__input" type="password" name="password" id="password" placeholder="パスワード">
                 <p class="register-form__error-message">
-                    @error('password')
+                    <!-- @error('password')
                     {{ $message }}
-                    @enderror
+                    @enderror -->
+                    @if ($errors->has('error'))
+                  <span class="invalid-feedback" role="alert">
+                    {{ $errors->first('error') }}
+                  </span>
+                @endif
                 </p>
             </div>
             <input class="login-form__btn" type="submit" value="ログイン">

@@ -21,19 +21,19 @@
                 <th class="attendance__label">休憩時間</th>
                 <th class="attendance__label">勤務時間</th>
             </tr>
-            <!-- @foreach($ as $)
+            @foreach($items as $item)
             <tr class="attendance__row">
-                <td class="attendance__data">{{$->name}}</td>
-                <td class="attendance__data">{{$->timein}}</td>
-                <td class="attendance__data">{{$->timeout}}</td>
-                <td class="attendance__data">{{$->breakTime}}</td>
-                <td class="attendance__data">{{$->workTime}}</td>
+                <td class="attendance__data">{{$item->name}}</td>
+                <td class="attendance__data">{{$item->punchIn}}</td>
+                <td class="attendance__data">{{$item->punchOut}}</td>
+                <td class="attendance__data">{{$item->breakTime}}</td>
+                <td class="attendance__data">{{$item->workTime}}</td>
             </tr>
-            @endforeach -->
+            @endforeach
         </table>
     </div>
     <div class="page-nation">
-        <!-- {{ $->links('')}} -->
+        
     </div>
 </div>
 @endsection

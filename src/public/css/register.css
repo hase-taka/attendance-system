@@ -1,0 +1,51 @@
+.register-form{
+
+}
+
+.register-form__head-title{
+    padding-top:40px;
+    text-align: center;
+}
+
+.register-form__inner{
+    text-align: center;
+}
+
+.register-form__input{
+    width: 25%;
+    height: 35px;
+    margin-bottom: 10px;
+    background-color: rgb(236, 236, 236);border: 1px gray solid;
+    border-radius: 3px;
+
+}
+
+::placeholder{
+    padding-left: 10px;
+
+}
+
+.register-form__btn{
+    width: 25.5%;
+    height: 40px;
+    margin-top: 10px;
+    background-color: blue;
+    color: white;
+    border: 1px blue solid;
+    border-radius: 3px;
+}
+
+.login-transition__form{
+    margin-top: 30px;
+    padding-bottom: 9%;
+}
+
+.login-nav{
+    color: gray;
+}
+
+.login-transition__btn{
+    color: blue;
+    text-decoration: none;
+    padding-bottom: 20px;
+}

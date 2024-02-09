@@ -19,17 +19,22 @@
                         <a href="">ホーム</a>
                     </li>
                     <li class="header_nav-item">
-                        <a href="">日付一覧</a>
+                        <a href="/attendance">日付一覧</a>
                     </li>
                     <li class="header_nav-item">
-                        <a href="">ログアウト</a>
+                        <a href="/logout">ログアウト</a>
+                        <!-- <form method="post" action="/logout"> -->
+  <!-- <input type="hidden" name="Return_URL" value="/login"> -->
+  <!-- <input type="submit" value="ログアウト" /> -->
                     </li>
                 </ul>
             </div>
         </div>
     </header>
     <main>
+        <div class="main">
         @yield('content')
+        </div>
     </main>
     <footer class="footer">
         <p class="footer-small"><small>Atte,inc.</small></p>

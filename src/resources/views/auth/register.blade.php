@@ -11,7 +11,7 @@
         <form class="register-form__form" action="/register" method="post">
             @csrf
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="name" id="name" placeholder="名前">
+                <input class="register-form__input" type="text" name="name" id="name" placeholder="名前" >
                 <p class="register-form__error-message">
                     @error('name')
                     {{ $message }}

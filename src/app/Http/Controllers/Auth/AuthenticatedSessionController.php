@@ -37,19 +37,33 @@ class AuthenticatedSessionController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->only('email', 'password');
+        
 
-        if (Auth::attempt($credentials)){
+        if (Auth::attempt($credentials,$request->filled('remember'))){
             $request->session()->regenerate();
 
             return redirect()->intended('/');
+
         }
 
         return back()->withErrors([
-            'email' => 'メールアドレスが正しくありません'
+            'error' => 'メールアドレス,パスワードのどちらかもしくわ両方が正しくありません'
         ]);
 
-    }
+        // $user_info = $request->validate([
+        //     'email' => ['required', 'email'],
+        //     'password' => ['required'],
+        // ]);
 
+        // // ログインに成功したとき
+        // if (Auth::attempt($user_info)) {
+        //     $request->session()->regenerate();
+        //     return redirect()->route('dashboard');
+        // }
+
+        // // 上記のif文でログインに成功した人以外(=ログインに失敗した人)がここに来る
+        // return redirect()->back();
+    }
     /**
      * Display the specified resource.
      *
@@ -90,8 +104,16 @@ class AuthenticatedSessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
+    // public function destroy($id)
+    // {
+        public function destroy(Request $request)
+{
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/login');
 }
+    }
+
