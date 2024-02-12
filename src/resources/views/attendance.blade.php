@@ -5,11 +5,8 @@
 @endsection
 
 @section('content')
-<div class="attendance-date__form">
-    <form class="attendance-date__form-inner" action="">
-    @csrf
-        <input type="date">
-    </form>
+<div class="attendance-date">
+    <a href="/data?date={{ \Carbon\Carbon::parse($date)->subDay()->format('Y-m-d') }}">&lt;</a><p>{{$date}}</p><a href="/data?date={{ \Carbon\Carbon::parse($date)->addDay()->format('Y-m-d') }}">&gt;</a>
 </div>
 <div class="container">
     <div class="attendance">
@@ -21,13 +18,19 @@
                 <th class="attendance__label">休憩時間</th>
                 <th class="attendance__label">勤務時間</th>
             </tr>
-            @foreach($items as $item)
+            @foreach($times as $time)
             <tr class="attendance__row">
-                <td class="attendance__data">{{$item->name}}</td>
-                <td class="attendance__data">{{$item->punchIn}}</td>
-                <td class="attendance__data">{{$item->punchOut}}</td>
-                <td class="attendance__data">{{$item->breakTime}}</td>
-                <td class="attendance__data">{{$item->workTime}}</td>
+                <td class="attendance__data">{{$time->user->name}}</td>
+                <td class="attendance__data">
+                <?php $punchIn = new DateTime($time->punchIn);
+                echo $punchIn->format('H:i:s');?>
+                </td>
+                <td class="attendance__data">
+                <?php $punchOut = new DateTime($time->punchOut);
+                echo $punchOut->format('H:i:s');?>
+                </td>
+                <td class="attendance__data">{{$time->breakTime}}</td>
+                <td class="attendance__data">{{$time->workTime}}</td>
             </tr>
             @endforeach
         </table>

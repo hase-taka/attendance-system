@@ -43,8 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function timestamp()
+    public function time()
     {
         return $this->hasMany(Time::class);
     }
+
+    public function break()
+    {
+        return $this->hasMany(BreakTime::class);
+    }
+
+
 }

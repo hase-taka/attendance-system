@@ -16,7 +16,7 @@
             <div class="header__nav">
                 <ul class="header__nav-inner">
                     <li class="header_nav-item">
-                        <a href="">ホーム</a>
+                        <a href="/">ホーム</a>
                     </li>
                     <li class="header_nav-item">
                         <a href="/attendance">日付一覧</a>

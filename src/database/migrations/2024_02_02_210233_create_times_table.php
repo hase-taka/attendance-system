@@ -16,11 +16,12 @@ class CreateTimesTable extends Migration
         Schema::create('times', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->date('date');
             $table->dateTime('punchIn');
             $table->dateTime('punchOut')->nullable();
-            $table->dateTime('breakIn')->nullable();
-            $table->dateTime('breakOut')->nullable();
-            $table->Time('breakTime')->nullable();
+            // $table->Time('breakIn')->nullable();
+            // $table->Time('breakOut')->nullable();
+            // $table->Time('breakTime')->nullable();
             $table->Time('workTime')->nullable();
             $table->timestamps();
         });

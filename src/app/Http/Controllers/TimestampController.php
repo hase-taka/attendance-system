@@ -56,6 +56,11 @@ class TimestampController extends Controller
 
          // **必要なルール**
         // ・同じ日に2回出勤が押せない(もし打刻されていたらhomeに戻る設定)
+// **必要なルール**
+        // ・同じ日に2回出勤が押せない(もし打刻されていたらhomeに戻る設定)
+        
+
+
         $user = Auth::user();
         $oldtimein = Time::where('user_id',$user->id)->latest()->first();//一番最新のレコードを取得
         
@@ -82,19 +87,12 @@ class TimestampController extends Controller
             return redirect()->back()->with('message','退勤打刻済みです');
         }
 
-        $month = intval($today->month);
-        $day = intval($today->day);
-        $year = intval($today->year);
-
-
         $time = Time::create([
             'user_id' => $user->id,
             'punchIn' => Carbon::now(),
-            'month' => $month,
-            'day' => $day,
-            'year' => $year,
+            // parse()->format('H:i:s'),
+            'date' => Carbon::parse()->format('Y-m-d'),
         ]);
-
         return redirect()->back();
     }
     
@@ -103,34 +101,62 @@ class TimestampController extends Controller
 
 
     public function punchOut(){
-$user = Auth::user();
+        $user = Auth::user();
         $timestamp = Time::where('user_id', $user->id)->latest()->first();
 
-        if( !empty($timestamp->punchOut)) {
+        if( !empty($timestamp->punchOut)||empty($timestamp->punchIn)) {
             return redirect()->back()->with('error', '既に退勤の打刻がされているか、出勤打刻されていません');
         }
 
+        // 各時間の取得
         $now = new Carbon();
         $punchIn = new Carbon($timestamp->punchIn);
         $breakIn = new Carbon($timestamp->breakIn);
         $breakOut = new Carbon($timestamp->breakOut);
-
-        $stayTime = $punchIn->diffInMinutes($now);
+        // 勤務時間の差分の計算
+        $punchOuttime = strtotime($now);
         
-        $breakTime = $breakIn-> diffInMinutes($breakOut);
-        $workMinute = $stayTime - $breakTime;
-        //15分刻み
-        $workingHour = ceil($workingMinute / 15) * 0.25;
-// dd($workTime);
+        $punchIntime = strtotime($punchIn);
+        $stayTime = $punchOuttime - $punchIntime;
+        // 休憩時間の差分の計算
+        $breakIntime = strtotime($breakIn);
+        $breakOuttime = strtotime($breakOut);
+        $breakTimeint = ($breakOuttime - $breakIntime);
+        
+        $workTimeint = ($stayTime - $breakTimeint);
+
+        $breakTime = gmdate('H:i',$breakTimeint);
+        $workTime = gmdate('H:i',$workTimeint);
+
+        // 退勤が12時を過ぎた場合、出勤当日の11:59分の打刻
+        $oldpunchIn = new Carbon($timestamp->punchIn);
+        $punchInDay = $oldpunchIn->format('Y-m-d');
+        $punchOut = Carbon::now();
+        $punchOutDay = $punchOut->format('Y-m-d');
+
+        $punchOutEndOfDay = $oldpunchIn->endOfDay();
+
+        if($punchInDay == $punchOutDay){
         $timestamp->update([
             'punchOut' => Carbon::now(),
-            'breakTime' => $breakTime*100,
-            'workTime' => $workTime*100,
+            // parse()->format('H:i:s'),
+            'breakTime' => $breakTime,
+            'workTime' => $workTime,
         ]);
+    }
+
+        if($punchInDay != $punchOutDay){
+            $timestamp->update([
+                'punchOut' => $punchOutEndOfDay,
+                // parse()->format('H:i:s'),
+                'breakTime' => $breakTime,
+                'workTime' => $workTime,
+            ]);
+        }
         // dd($timestamp);
         
 
-        return redirect()->back()->with('my_status', '退勤打刻が完了しました');
+        return redirect()->back()->with('message', '退勤打刻が完了しました');
     
     }
 
@@ -138,9 +164,10 @@ $user = Auth::user();
     public function breakIn(){
         $user = Auth::user();
         $oldtimein = Time::where('user_id',$user->id)->latest()->first();
-        if($oldtimein->punchIn && !$oldtimein->punchOut && !$oldtimein->breakIn) {
+
+        if($oldtimein->punchIn && !$oldtimein->punchOut && !$oldtimein->breakIn){
             $oldtimein->update([
-                'breakIn' => Carbon::now(),
+                'breakIn' => Carbon::parse()->format('H:i:s'),
             ]);
             return redirect()->back();
         }
@@ -151,15 +178,16 @@ $user = Auth::user();
     public function breakOut(){
         $user = Auth::user();
         $oldtimein = Time::where('user_id',$user->id)->latest()->first();
+
         if($oldtimein->breakIn && !$oldtimein->breakOut) {
             $oldtimein->update([
                 'breakOut' => Carbon::now(),
             ]);
             return redirect()->back();
         }
-        return redirect()->back();
-    }
-
+        else{return redirect()->back()->with('error','失敗です');
+    }}
+// ->format('H:i:s')
     public function admin(){
         $items = [];
         return view('attendance',['items'=>$items]);

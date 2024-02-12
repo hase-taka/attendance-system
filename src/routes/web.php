@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\TimestampController;
+use App\Http\Controllers\AttendanceListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/punchout',[TimestampController::class, 'punchOut']);
     Route::post('/breakin',[TimestampController::class, 'breakIn']);
     Route::post('/breakout',[TimestampController::class, 'breakOut']);
-    Route::get('/attendance', [TimestampController::class,'admin']);
-    Route::post('/attendance', [TimestampController::class,'result']);
-
+    Route::get('/attendance', [AttendanceListController::class,'index']);
 });
 
 // ログイン後-打刻画面表示
