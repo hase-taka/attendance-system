@@ -6,11 +6,11 @@
 
 @section('content')
 <div class="attendance-date">
-    <a href="/data?date={{ \Carbon\Carbon::parse($date)->subDay()->format('Y-m-d') }}">&lt;</a><p>{{$date}}</p><a href="/data?date={{ \Carbon\Carbon::parse($date)->addDay()->format('Y-m-d') }}">&gt;</a>
+    <a class="arrow-left" href="{{ route('attendance', ['date' => \Carbon\Carbon::parse($date)->subDay()->toDateString()]) }}"></a><p class="attendance-date__date">{{$date}}</p><a class="arrow-right" href="{{ route('attendance', ['date' => \Carbon\Carbon::parse($date)->addDay()->toDateString()]) }}"></a>
 </div>
 <div class="container">
-    <div class="attendance">
-        <table class="attendance__table">
+    <div class="attendance__table">
+        <table class="attendance__table-inner">
             <tr class="attendance__row">
                 <th class="attendance__label">名前</th>
                 <th class="attendance__label">勤務開始</th>
@@ -29,14 +29,14 @@
                 <?php $punchOut = new DateTime($time->punchOut);
                 echo $punchOut->format('H:i:s');?>
                 </td>
-                <td class="attendance__data">{{$time->breakTime}}</td>
+                <td class="attendance__data">{{$time->totalBreakTime}}</td>
                 <td class="attendance__data">{{$time->workTime}}</td>
             </tr>
             @endforeach
         </table>
     </div>
-    <div class="page-nation">
-        
+    <div class="pagination">
+        {{ $times->links('pagination::default') }}
     </div>
 </div>
 @endsection

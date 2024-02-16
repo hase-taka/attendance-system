@@ -38,7 +38,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/punchout',[TimestampController::class, 'punchOut']);
     Route::post('/breakin',[TimestampController::class, 'breakIn']);
     Route::post('/breakout',[TimestampController::class, 'breakOut']);
-    Route::get('/attendance', [AttendanceListController::class,'index']);
+    Route::get('/attendance', [AttendanceListController::class,'index'])->name('attendance');
+    // Route::get('/attendance', 'AttendanceListController@index')->name('attendance');
 });
 
 // ログイン後-打刻画面表示

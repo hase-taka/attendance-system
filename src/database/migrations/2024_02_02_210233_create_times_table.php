@@ -19,10 +19,8 @@ class CreateTimesTable extends Migration
             $table->date('date');
             $table->dateTime('punchIn');
             $table->dateTime('punchOut')->nullable();
-            // $table->Time('breakIn')->nullable();
-            // $table->Time('breakOut')->nullable();
-            // $table->Time('breakTime')->nullable();
             $table->Time('workTime')->nullable();
+            $table->Time('totalBreakTime')->default('00:00:00');
             $table->timestamps();
         });
     }

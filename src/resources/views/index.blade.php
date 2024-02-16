@@ -55,7 +55,8 @@ $(function() {
             </form>
         </div>
     </div>
+    <p class="error_alert">{{session('error')}}</p>
+    <p class="message_alert">{{session('message')}}</p>
 </div>
-<p>{{session('error')}}</p>
-<p>{{session('message')}}</p>
+
 @endsection

@@ -49,3 +49,7 @@
     text-decoration: none;
     padding-bottom: 20px;
 }
+
+.register-form__error-message{
+    color: red;
+}

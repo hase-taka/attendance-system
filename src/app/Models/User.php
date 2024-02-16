@@ -43,15 +43,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function time()
+    public function times()
     {
         return $this->hasMany(Time::class);
     }
 
-    public function break()
+    public function breakTimes()
     {
         return $this->hasMany(BreakTime::class);
     }
+
+    // public function breakTimes()
+    // {
+    //     return $this->hasMany(BreakTime::class);
+    // }
+
+    // public function break()
+    // {
+    //     return $this->hasMany(BreakTime::class);
+    // }
 
 
 }

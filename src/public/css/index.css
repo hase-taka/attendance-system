@@ -33,3 +33,16 @@
     display: flex;
     justify-content: center;
 }
+
+.error_alert{
+    color: red;
+    text-align: center;
+    font: 22px;
+    font-weight: bold;
+}
+
+.message_alert{
+    color: blue;
+    text-align: center;
+    font: 22px;
+}
