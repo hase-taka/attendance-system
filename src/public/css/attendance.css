@@ -78,6 +78,10 @@
 
 .attendance__date{
     text-align: center;
+    width: 20%;
+}
+.attendance__label{
+    width: 20%;
 }
 
 
