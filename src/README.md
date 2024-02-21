@@ -2,7 +2,7 @@
 
 ## 概要説明
 
-<img width="200" alt="スクリーンショット 2024-02-17 0 24 32" src="https://github.com/hase-taka/attendance-form/assets/148784913/0660615f-3fae-4ec5-ac5b-1a42f29bf76f">
+<img width="500" alt="スクリーンショット 2024-02-17 0 24 32" src="https://github.com/hase-taka/attendance-form/assets/148784913/0660615f-3fae-4ec5-ac5b-1a42f29bf76f">
 
 ユーザーの勤務時間・休憩時間を記録するシステムを作成しました。
 
@@ -32,7 +32,7 @@ src/スクリーンショット 2024-02-17 0.34.06.png
 
 ## ER 図
 
-<img width="200" alt="スクリーンショット 2024-02-17 21 01 04" src="https://github.com/hase-taka/attendance-form/assets/148784913/649e7dee-e4f1-4462-ae23-b3d399d08c86">
+<img width="500" alt="スクリーンショット 2024-02-17 21 01 04" src="https://github.com/hase-taka/attendance-form/assets/148784913/649e7dee-e4f1-4462-ae23-b3d399d08c86">
 
 ## 環境構築
 
