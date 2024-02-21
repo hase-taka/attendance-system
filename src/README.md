@@ -2,7 +2,8 @@
 
 ## 概要説明
 
-src/スクリーンショット 2024-02-17 0.24.32.png
+/Users/hasegawatakanori/coachtech/laravel/attendance-form/src/スクリーンショット 2024-02-17 0.24.32.png
+
 ユーザーの勤務時間・休憩時間を記録するシステムを作成しました。
 
 ## 作成目的
@@ -31,8 +32,7 @@ src/スクリーンショット 2024-02-17 0.34.06.png
 
 ## ER 図
 
-src/スクリーンショット 2024-02-17 21.01.04.png
-/Users/hasegawatakanori/coachtech/laravel/attendance-form/src/スクリーンショット 2024-02-16 23.45.23.png
+/Users/hasegawatakanori/coachtech/laravel/attendance-form/src/スクリーンショット 2024-02-17 21.01.04.png
 
 ## 環境構築
 
