@@ -12,7 +12,7 @@
     <div class="attendance__table">
         <table class="attendance__table-inner">
             <tr class="attendance__row">
-                <th class="attendance__label">名前</th>
+                <th class="attendance__label">名 前</th>
                 <th class="attendance__label">勤務開始</th>
                 <th class="attendance__label">勤務終了</th>
                 <th class="attendance__label">休憩時間</th>

@@ -22,7 +22,7 @@
                         <a href="/attendance">日付一覧</a>
                     </li>
                     <li class="header_nav-item">
-                        <a href="/users_list">利用者一覧</a>
+                        <a href="/user_list">利用者一覧</a>
                     </li>
                     <li class="header_nav-item">
                         <a href="/logout">ログアウト</a>

@@ -34,21 +34,12 @@ Route::get('/logout',[AuthenticatedSessionController::class, 'destroy'])->middle
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/',[TimestampController::class, 'create']);
-    Route::post('/punchin',[TimestampController::class, 'punchIn']);
-    Route::post('/punchout',[TimestampController::class, 'punchOut']);
+    Route::post('/punchin',[TimestampController::class, 'punchIn'])->name('punchIn');
+    Route::post('/punchout',[TimestampController::class, 'punchOut'])->name('punchOut');
     Route::post('/breakin',[TimestampController::class, 'breakIn']);
     Route::post('/breakout',[TimestampController::class, 'breakOut']);
     Route::get('/attendance', [AttendanceListController::class,'index'])->name('attendance');
-    // Route::get('/attendance', 'AttendanceListController@index')->name('attendance');
+    Route::get('/users_list', [AttendanceListController::class,'users_list'])->name('users_list');
+    Route::get('/{user}/user_attendance_list', [AttendanceListController::class,'user_attendance_list'])->name('user_attendance_list');
 });
 
-// ログイン後-打刻画面表示
-// ->middleware('auth');
-// // 打刻機能
-// ->middleware('auth');
-
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
