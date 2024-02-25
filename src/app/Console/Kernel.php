@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         // $schedule->command('auto:punch-out')->dailyAt('17:54');
-         $schedule->job(\App\Jobs\AutoPunchOut::class)->dailyAt('00:00');
+         $schedule->job(\App\Jobs\AutoPunchOut::class)->dailyAt('23:59');
     }
 
     /**

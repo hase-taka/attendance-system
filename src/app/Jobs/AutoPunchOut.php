@@ -34,11 +34,12 @@ class AutoPunchOut implements ShouldQueue
      */
     public function handle()
     {
-        $now = Carbon::now();
-        $yesterday = $now->subDay()->format('Y-m-d');
+        // $now = Carbon::now();
+        // $yesterday = Carbon::now()->subDay()->format('Y-m-d');
+        $today = Carbon::now()->format('Y-m-d');
 
-        $times = Time::where('date', $yesterday)->get();
-
+        $times = Time::where('date', $today)->get();
+        // ↑$yesterday <-> $today
         foreach($times as $time){
         if ($time->punchIn && !$time->punchOut) {
 
@@ -70,24 +71,22 @@ class AutoPunchOut implements ShouldQueue
 
 
             $time->update([
-                'punchOut' => $now->subDay()->endOfDay(),
+                'punchOut' => Carbon::now()->subDay()->endOfDay(),
                 'totalBreakTime' => $totalBreakTime,
                 'workTime' => $workTime,
             ]); // 勤務終了打刻
 
             // 勤務開始日の翌日の勤務開始打刻
-            $nextDayPunchIn = $now->startOfDay();
+            $nextDayPunchIn = Carbon::now()->addDay()->startOfDay();
+            // Carbon::now()->addDay()->startOFDay()
             $newPunchIn = Time::create([
                 'user_id' => $time->user_id,
                 'punchIn' => $nextDayPunchIn,
                 'date' => $nextDayPunchIn->format('Y-m-d'),
             ]);
-            session(['workStarted' => true,]);
+            
         }}
     }
 
-    public function newPunchIn(){
-
-    }
 }
 // 'timeId' => $time->id
