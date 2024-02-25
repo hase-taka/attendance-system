@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->command('auto:punch-out')->dailyAt('17:54');
+         $schedule->job(\App\Jobs\AutoPunchOut::class)->dailyAt('00:00');
     }
 
     /**

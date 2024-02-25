@@ -23,7 +23,7 @@ Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register',[RegisteredUserController::class, 'store']);
 
 // ログイン画面表示
-Route::get('/login',[AuthenticatedSessionController::class, 'create']);
+Route::get('/login',[AuthenticatedSessionController::class, 'create'])->name('login');
 // Route::get('/login',[AuthenticatedSessionController::class, 'store']);
 
 // ログイン機能

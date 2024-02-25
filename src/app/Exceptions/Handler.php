@@ -38,4 +38,13 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // セッションタイムアウト時はログインページにリダイレクトさせる
+    public function render($request, Throwable $exception) {
+		if ($exception instanceof TokenMismatchException) {
+			return redirect()->route('login');
+		}
+
+		return parent::render($request, $exception);
+	}
 }
