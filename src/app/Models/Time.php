@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class Time extends Model
 {
-    protected $fillable = ['user_id', 'date','punchIn', 'punchOut','breakIn','breakOut','workTime','totalBreakTime'];
+    protected $fillable = ['user_id', 'date','punchIn', 'punchOut','breakIn','breakOut','workTime','totalBreakTime','workStartButtonState','workEndButtonState','breakStartButtonState','breakEndButtonState'];
 
     public function user()
     {

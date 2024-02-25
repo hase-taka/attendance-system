@@ -16,7 +16,7 @@
             <form class="timestamp" action="{{ route('punchIn') }}" method="post">
             @csrf
                 <div class="punchin__btn">
-                    <button class="punchin__btn-submit" type="submit" {{ session('workStarted') ? 'disabled' : '' }}>勤務開始</button>
+                    <button class="punchin__btn-submit" type="submit" {{ $workStartButtonState ? 'disabled' : '' }}>勤務開始</button>
                 </div>
             </form>
         </div>
@@ -24,7 +24,7 @@
             <form class="timestamp" action="{{ route('punchOut') }}" method="post">
             @csrf
                 <div class="punchout__btn">
-                    <button class="punchout__btn-submit" type="submit" {{ !session('workStarted') ? 'disabled' : '' }} {{ session('breakEnd') ? 'disabled' : '' }}>勤務終了</button>
+                    <button class="punchout__btn-submit" type="submit"   {{ $workEndButtonState ? 'disabled' : '' }}>勤務終了</button>
                 </div>
             </form>
         </div>
@@ -34,7 +34,7 @@
             <form class="timestamp" action="breakin" method="post">
             @csrf
                 <div class="breakin__btn">
-                    <button class="breakin__btn-submit" type="submit" {{ !session('workStarted') ? 'disabled' : '' }} {{ session('breakEnd') ? 'disabled' : '' }} >休憩開始</button>
+                    <button class="breakin__btn-submit" type="submit"   {{ $breakStartButtonState ? 'disabled' : '' }}>休憩開始</button>
                 </div>
             </form>
         </div>
@@ -42,7 +42,7 @@
             <form class="timestamp" action="breakout" method="post">
             @csrf
                 <div class="breakout__btn">
-                    <button class="breakout__btn-submit" type="submit" {{ !session('breakEnd') ? 'disabled' : '' }}>休憩終了</button>
+                    <button class="breakout__btn-submit" type="submit" {{ $breakEndButtonState ? 'disabled' : '' }}>休憩終了</button>
                 </div>
             </form>
         </div>

@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Log;
 class TimestampController extends Controller
 {
     public function create(){
-       
-        return view('index');
+        $defaultWorkStartButton = 0;
+        $defaultWorkEndButton = 1;
+        $defaultBreakStartButton = 1;
+        $defaultBreakEndButton = 1;
+        $user = Auth::user();
+        $buttonState = Time::where('user_id',$user->id)->latest()->first();
+        $workStartButtonState = $buttonState->workStartButtonState ?? $defaultWorkStartButton;
+        $workEndButtonState = $buttonState->workEndButtonState ?? $defaultWorkEndButton;
+        // dd($workButtonState);
+        $breakStartButtonState = $buttonState->breakStartButtonState ?? $defaultBreakStartButton;
+        $breakEndButtonState = $buttonState->breakEndButtonState ?? $defaultBreakEndButton;
+        return view('index',compact('workStartButtonState','workEndButtonState','breakStartButtonState','breakEndButtonState'));
     }
 
 
@@ -51,7 +61,11 @@ class TimestampController extends Controller
             'user_id' => $user->id,
             'punchIn' => Carbon::now(),
             'date' => Carbon::parse()->format('Y-m-d'),
+            'workStartButtonState' => true,
+            'workEndButtonState' => false,
+            'breakStartButtonState' => false,
         ]);
+        // dd($time);
         session(['workStarted' => true]);
         return redirect()->back()->withInput(['timeId' => $time->id])->with('message','出勤打刻が完了しました');
     }
@@ -106,6 +120,10 @@ class TimestampController extends Controller
             'punchOut' => Carbon::now(),
             'totalBreakTime' => $totalBreakTime,
             'workTime' => $workTime,
+            'workStartButtonState' => false,
+            'workEndButtonState' => true,
+            'breakStartButtonState' => true,
+            'breakEndButtonState' => true
         ]);
         session(['workStarted' => false]);
         return redirect()->back()->with('message', '退勤打刻が完了しました');
@@ -147,6 +165,13 @@ class TimestampController extends Controller
 
         $time->breakTimes()->save($breakTime);
         session(['breakEnd' => true]);
+        
+        $oldTime->update([
+            'workEndButtonState' => true,
+            'breakStartButtonState'=> true,
+            'breakEndButtonState' => false
+        ]);
+
         return redirect()->back()->with('message','休憩開始打刻が完了しました');}
     }
 
@@ -183,6 +208,13 @@ class TimestampController extends Controller
         // Timeモデルとのリレーションを利用してBreakTimeを関連付ける
         $time->breakTimes()->save($breakTime);
         session(['breakEnd' => false]);
+
+        $time->update([
+            'workEndButtonState' => false,
+            'breakStartButtonState'=> false,
+            'breakEndButtonState' => true
+        ]);
+
         return redirect()->back()->with('message','休憩終了打刻が完了しました');}
     }
 

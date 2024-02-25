@@ -2,7 +2,7 @@
 
 ## 概要説明
 
-<img width="500" alt="スクリーンショット 2024-02-17 0 24 32" src="https://github.com/hase-taka/attendance-form/assets/148784913/0660615f-3fae-4ec5-ac5b-1a42f29bf76f">
+<img width="600" alt="スクリーンショット 2024-02-25 21 46 00" src="https://github.com/hase-taka/attendance-form/assets/148784913/fbd9a89b-70ec-4f0b-8d10-944717835786">
 
 ユーザーの勤務時間・休憩時間を記録するシステムを作成しました。
 
@@ -12,13 +12,13 @@
 
 ## アプリケーション URL
 
-## 他のリポジトリ
-
 ## 機能一覧
 
 -   登録・ログイン機能
 -   打刻機能
--   ユーザーの勤務状況一覧
+-   ユーザーの日付での勤務状況一覧
+-   ユーザー一覧
+-   ユーザー毎の勤怠一覧
 
 ## 使用技術
 
@@ -28,11 +28,11 @@
 
 ## テーブル設計
 
-src/スクリーンショット 2024-02-17 0.34.06.png
+<img width="600" alt="スクリーンショット 2024-02-25 21 48 20" src="https://github.com/hase-taka/attendance-form/assets/148784913/4792489b-668b-4513-8be8-71a6755593f3">
 
 ## ER 図
 
-<img width="500" alt="スクリーンショット 2024-02-17 21 01 04" src="https://github.com/hase-taka/attendance-form/assets/148784913/649e7dee-e4f1-4462-ae23-b3d399d08c86">
+<img width="600" alt="スクリーンショット 2024-02-25 21 22 50" src="https://github.com/hase-taka/attendance-form/assets/148784913/49dd0319-3c33-47fb-ac01-b2068f4491bb">
 
 ## 環境構築
 

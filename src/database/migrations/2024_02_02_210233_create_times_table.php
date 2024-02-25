@@ -21,6 +21,10 @@ class CreateTimesTable extends Migration
             $table->dateTime('punchOut')->nullable();
             $table->Time('workTime')->nullable();
             $table->Time('totalBreakTime')->default('00:00:00');
+            $table->boolean('workStartButtonState')->nullable();
+            $table->boolean('workEndButtonState')->nullable();
+            $table->boolean('breakStartButtonState')->nullable();
+            $table->boolean('breakEndButtonState')->nullable();
             $table->timestamps();
         });
     }
