@@ -26,9 +26,6 @@
                     </li>
                     <li class="header_nav-item">
                         <a href="/logout">ログアウト</a>
-                        <!-- <form method="post" action="/logout"> -->
-  <!-- <input type="hidden" name="Return_URL" value="/login"> -->
-  <!-- <input type="submit" value="ログアウト" /> -->
                     </li>
                 </ul>
             </div>
