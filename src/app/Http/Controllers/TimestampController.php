@@ -53,10 +53,6 @@ class TimestampController extends Controller
             $oldDay = $oldTimePunchOut->startOfDay();//最後に登録したpunchInの時刻を00:00:00で代入
         }
 
-        // if(($oldDay == $today)) {
-        //     return redirect()->back()->with('error','退勤打刻済みです');
-        // }
-
         $time = Time::create([
             'user_id' => $user->id,
             'punchIn' => Carbon::now(),
@@ -65,7 +61,7 @@ class TimestampController extends Controller
             'workEndButtonState' => false,
             'breakStartButtonState' => false,
         ]);
-        // dd($time);
+
         session(['workStarted' => true]);
         return redirect()->back()->withInput(['timeId' => $time->id])->with('message','出勤打刻が完了しました');
     }
@@ -92,8 +88,7 @@ class TimestampController extends Controller
         // 勤務時間取得のため各時間の取得
         $now = new Carbon();
         $punchIn = new Carbon($timestamp->punchIn);
-        // $breakIn = new Carbon($timestamp->breakIn);
-        // $breakOut = new Carbon($timestamp->breakOut);
+
         // 勤務時間の差分の計算
         $punchOuttime = strtotime($now);
         $punchIntime = strtotime($punchIn);
@@ -113,7 +108,6 @@ class TimestampController extends Controller
         $punchOut = Carbon::now();
         $punchOutDay = $punchOut->format('Y-m-d');
 
-        // $punchOutEndOfDay = $oldpunchIn->endOfDay();
 
         if($punchInDay == $punchOutDay){
         $timestamp->update([
@@ -127,25 +121,15 @@ class TimestampController extends Controller
         ]);
         return redirect()->back()->with('message', '退勤打刻が完了しました');
         }
-
-        // if($punchInDay != $punchOutDay){
-        //     $timestamp->update([
-        //         'punchOut' => $punchOutEndOfDay,
-        //         'totalBreakTime' => $totalBreakTime,
-        //         'workTime' => $workTime,
-        //     ]);
-        //     session(['workStarted' => false]);
-        // return redirect()->back()->with('message', '日付を跨いだため出勤日最終時刻で退勤打刻しました');
-        // }
     }
 
 
     public function breakIn(Request $request){
-        
+
         $user = Auth::user();
         $oldTime = Time::where('user_id',$user->id)->latest()->first();
         $timeId = $user->times()->latest()->first()->id;
-        
+
         $oldBreakTime = BreakTime::where('time_id',$timeId)->latest()->first();
 
         $time = Time::findOrFail($timeId);
@@ -164,7 +148,7 @@ class TimestampController extends Controller
 
         $time->breakTimes()->save($breakTime);
         session(['breakEnd' => true]);
-        
+
         $oldTime->update([
             'workEndButtonState' => true,
             'breakStartButtonState'=> true,

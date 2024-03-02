@@ -24,7 +24,7 @@ class AttendanceListController extends Controller
 
     public function user_attendance_list(User $user){
         // 利用者一覧のaタグで$userをパラメータで送ってもらう
-        $times = Time::where(['user_id'=>$user->id])->paginate(10);
+        $times = Time::where(['user_id'=>$user->id])->paginate(5);
         return view('user_attendance_list',compact('times','user'));
     }
 }
