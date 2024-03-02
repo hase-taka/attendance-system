@@ -125,7 +125,6 @@ class TimestampController extends Controller
             'breakStartButtonState' => true,
             'breakEndButtonState' => true
         ]);
-        session(['workStarted' => false]);
         return redirect()->back()->with('message', '退勤打刻が完了しました');
         }
 

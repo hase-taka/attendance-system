@@ -46,7 +46,7 @@ class AutoPunchOut implements ShouldQueue
             $timeId = $time->id;
             $toDayPunchIn = $time->punchIn;
             $breakTimes = BreakTime::where(['time_id'=>$timeId])->get();
-            
+
             $totalBreakTimeInt = 0;
         foreach($breakTimes as $breakTime){
             $breakTimeIn = $breakTime->breakIn;
@@ -68,12 +68,14 @@ class AutoPunchOut implements ShouldQueue
             $workTime = gmdate('H:i:s',$workTimeInt);
             $totalBreakTime = gmdate('H:i',$totalBreakTimeInt);
 
-
-
             $time->update([
                 'punchOut' => Carbon::now()->subDay()->endOfDay(),
                 'totalBreakTime' => $totalBreakTime,
                 'workTime' => $workTime,
+                'workStartButtonState' => false,
+                'workEndButtonState' => true,
+                'breakStartButtonState' => true,
+                'breakEndButtonState' => true
             ]); // 勤務終了打刻
 
             // 勤務開始日の翌日の勤務開始打刻
@@ -83,8 +85,10 @@ class AutoPunchOut implements ShouldQueue
                 'user_id' => $time->user_id,
                 'punchIn' => $nextDayPunchIn,
                 'date' => $nextDayPunchIn->format('Y-m-d'),
+                'workStartButtonState' => true,
+                'workEndButtonState' => false,
+                'breakStartButtonState' => false,
             ]);
-            
         }}
     }
 

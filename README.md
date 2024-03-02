@@ -12,19 +12,21 @@
 
 ## アプリケーション URL
 
+- <http://54.199.87.85/>
+
 ## 機能一覧
 
--   登録・ログイン機能
--   打刻機能
--   ユーザーの日付での勤務状況一覧
--   ユーザー一覧
--   ユーザー毎の勤怠一覧
+- 登録・ログイン機能
+- 打刻機能
+- 日付毎の勤怠状況一覧
+- ユーザー一覧
+- ユーザー毎の勤怠一覧
 
 ## 使用技術
 
--   PHP 7.49
--   Laravel 8.83.8
--   Mysql 8.0.26
+- PHP 7.49
+- Laravel 8.83.8
+- Mysql 8.0.26
 
 ## テーブル設計
 
@@ -48,8 +50,9 @@ Laravel 環境構築
 3. .env.example ファイルから.env ファイルを作成し、環境変数を変更
 4. php artisan key:generate
 5. php artisan migrate
+6. php artisan schedule:work
 
 ## URL
 
--   開発環境:<http://localhost/>
--   phpMyAdmin:<http://localhost:8080/>
+- 開発環境:<http://localhost/>
+- phpMyAdmin:<http://localhost:8080/>

@@ -11,7 +11,7 @@
         <form class="register-form__form" action="/register" method="post">
             @csrf
             <div class="register-form__group">
-                <input class="register-form__input" type="text" name="name" id="name" placeholder="名前" >
+                <input class="register-form__input" type="text" name="name" id="name" placeholder="名前" value="{{ old('name') }}">
                 <p class="register-form__error-message">
                     @error('name')
                     {{ $message }}
@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div class="register-form__group">
-                <input class="register-form__input" type="email" name="email" id="email" placeholder="メールアドレス">
+                <input class="register-form__input" type="email" name="email" id="email" placeholder="メールアドレス" value="{{ old('email') }}">
                 <p class="register-form__error-message">
                     @error('email')
                     {{ $message }}
